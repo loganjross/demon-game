@@ -49,14 +49,15 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
     if (stage !== "playing") return;
 
-    function handleKeyDown({ key }: KeyboardEvent) {
-      if (key === "ArrowLeft" || key.toLowerCase() === "a")
+    function handleKeyDown(e: KeyboardEvent) {
+      e.preventDefault();
+      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a")
         setHeldKeys((keys) => [...keys, "left"]);
-      if (key === "ArrowRight" || key.toLowerCase() === "d")
+      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d")
         setHeldKeys((keys) => [...keys, "right"]);
 
       if (
-        key === " " &&
+        e.key === " " &&
         (!fireballs.length ||
           Date.now() - fireballs[fireballs.length - 1].id >
             FIREBALL_SHOT_INTERVAL)
@@ -65,10 +66,11 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    function handleKeyUp({ key }: KeyboardEvent) {
-      if (key === "ArrowLeft" || key.toLowerCase() === "a")
+    function handleKeyUp(e: KeyboardEvent) {
+      e.preventDefault();
+      if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a")
         setHeldKeys((keys) => keys.filter((k) => k !== "left"));
-      if (key === "ArrowRight" || key.toLowerCase() === "d")
+      if (e.key === "ArrowRight" || e.key.toLowerCase() === "d")
         setHeldKeys((keys) => keys.filter((k) => k !== "right"));
     }
 

@@ -8,7 +8,7 @@ import { FireballProvider } from "./contexts/FireballContext";
 import { PlayerProvider } from "./contexts/PlayerContext";
 import { getTheme } from "./styles/theme";
 import { GlobalStyles } from "./styles/global";
-import { Header, Footer, GameFeedback } from "./components/Layout";
+import { Header, Footer, GameFeedback, Wormhole } from "./components/Layout";
 import { Aliens } from "./components/Aliens";
 import { Fireballs } from "./components/Fireballs";
 import { Player } from "./components/Player";
@@ -33,6 +33,7 @@ function ThemedApp() {
       <Aliens />
       <Fireballs />
       <Player />
+      <Wormhole />
       <Footer />
     </ThemeProvider>
   );

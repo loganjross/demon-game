@@ -1,4 +1,5 @@
 import { useGame } from "../../../contexts/GameContext";
+import { Flex } from "../Flex";
 import { Text } from "../../Typography";
 
 export function Timer() {
@@ -11,8 +12,11 @@ export function Timer() {
   }${secondsLeft}`;
 
   return (
-    <Text w="100%" fontSize="lg" fontWeight="bold">
-      {formattedTimer}
-    </Text>
+    <Flex w="100%" align="flex-end" justify="center" column>
+      <Text fontSize="sm">TIMER</Text>
+      <Text fontSize="lg" fontWeight="bold">
+        {formattedTimer}
+      </Text>
+    </Flex>
   );
 }

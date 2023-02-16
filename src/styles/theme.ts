@@ -29,7 +29,7 @@ export interface Theme {
       sm: string;
       base: string;
       lg: string;
-      xl: string;
+      btn: string;
     };
   };
 }
@@ -46,12 +46,12 @@ export function getTheme(level: number): Theme {
     spacing: 10,
     transition: 0.2,
     font: {
-      family: "Pirata One",
+      family: "Broken Plane Wing",
       size: {
-        sm: "14px",
-        base: "18px",
-        lg: "22px",
-        xl: "32px",
+        sm: "12px",
+        base: "16px",
+        lg: "20px",
+        btn: "42px",
       },
     },
   };

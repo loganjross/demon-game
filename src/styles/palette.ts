@@ -9,9 +9,9 @@ export interface ColorPalette {
 }
 
 const startPalette: ColorPalette = {
-  base: "#121512",
+  base: "#242429",
   text: "#faecc2",
-  contrast: "rgba(250, 236, 194, 0.7)",
+  contrast: "rgba(250, 236, 194, 0.4)",
   primary: "#d2f970",
   secondary: "#ef2238 ",
   error: "#ef2238 ",
@@ -20,20 +20,34 @@ const startPalette: ColorPalette = {
 
 const levelTwoPalette: ColorPalette = {
   ...startPalette,
-  base: startPalette.secondary,
-  text: startPalette.base,
+  base: "#e55247",
+  text: "#2b2f49",
+  primary: "#fffefe",
 };
 
 const levelThreePalette: ColorPalette = {
+  base: "#ffffff",
+  text: "#000000",
+  contrast: "rgba(0, 0, 0, 0.5)",
+  primary: "#000000",
+  secondary: "#ffffff ",
+  error: "#000000 ",
+  success: "#ffffff",
+};
+
+const levelFourPalette: ColorPalette = {
   ...startPalette,
-  base: "purple",
-  contrast: "rgba(255, 255, 255, 0.7)",
+  base: "#e55247",
+  text: "#fffefe",
+  contrast: "rgba(0, 0, 0, 0.5)",
+  primary: "#fffefe",
 };
 
 const colorPalettes: ColorPalette[] = [
   startPalette,
   levelTwoPalette,
   levelThreePalette,
+  levelFourPalette,
 ];
 
 /**

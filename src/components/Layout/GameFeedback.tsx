@@ -21,7 +21,7 @@ const FlashFeedback = styled(Flex)`
 `;
 
 export function GameFeedback() {
-  const { stage, level } = useGame();
+  const { stage } = useGame();
 
   if (stage === "playing" || stage === "restart") return <></>;
 
@@ -29,10 +29,11 @@ export function GameFeedback() {
     <Flex
       position="absolute"
       posCenter
-      maxW="425px"
+      maxW="500px"
       p={2.5}
-      c={level > 1 ? "text" : "base"}
+      fontSize="lg"
       bg="contrast"
+      border="contrast"
       zIndex={200}
       column
     >
@@ -40,7 +41,7 @@ export function GameFeedback() {
         <>
           <Text mb={2}>
             Welcome! While you browse my projects and check out my music, feel
-            free to slaughter some aliens.
+            free to kill some aliens.
           </Text>
           <Text mb={2}>
             Use the <b>arrow keys</b> or <b>A</b> / <b>D</b> to move, and{" "}
@@ -48,6 +49,10 @@ export function GameFeedback() {
             pause anytime.
           </Text>
           <Text mb={2}>Survive as long as you can to beat the high score!</Text>
+          <Text mb={2}>
+            <b>SEIZURE WARNING:</b> There are flashing lights if you survive
+            long enough.
+          </Text>
         </>
       )}
       {stage === "gameover" && <Text mb={2}>TODO leaderboard</Text>}

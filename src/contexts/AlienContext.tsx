@@ -10,6 +10,7 @@ export const ALIEN_SIZE = 70;
 export const BASE_ALIEN_SPEED = window.innerHeight / 200;
 export const BASE_ALIEN_SPAWN_INTERVAL = 750;
 export const ALIEN_DEATH_DURATION = 1000;
+export const LEVEL_UP_SCALER = 1.5;
 
 interface Alien {
   id: number;
@@ -35,8 +36,8 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (game.level) {
-      setAlienSpeed((speed) => speed * 1.5);
-      setAlienSpawnInterval((interval) => interval / 1.5);
+      setAlienSpeed((speed) => speed * LEVEL_UP_SCALER);
+      setAlienSpawnInterval((interval) => interval / LEVEL_UP_SCALER);
     }
   }, [game.level]);
 
@@ -80,8 +81,8 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
                 pos: {
                   x:
                     alien.pos.x < player.pos.x
-                      ? alien.pos.x + alienSpeed / 2
-                      : alien.pos.x - alienSpeed / 2,
+                      ? alien.pos.x + alienSpeed / 3
+                      : alien.pos.x - alienSpeed / 3,
                   y: alien.pos.y + alienSpeed,
                 },
               }
@@ -101,7 +102,7 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
           alien.pos.y + ALIEN_SIZE > player.pos.y &&
           alien.pos.y < player.pos.y + PLAYER_SIZE
         ) {
-          const damageRoll = Math.floor(Math.random() * 20) + 10;
+          const damageRoll = Math.floor(Math.random() * 20) + 5;
           player.receiveDamage(damageRoll);
         }
 

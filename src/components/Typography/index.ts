@@ -10,8 +10,9 @@ export const Text = styled.p<
   font-family: ${({ variant, theme }) =>
     variant === "header" ? theme.font.family : "inherit"};
   font-size: ${({ variant, theme }) =>
-    variant === "header" ? theme.font.size.xl : "inherit"};
+    variant === "header" ? theme.font.size.lg : "inherit"};
   font-weight: ${({ variant }) => (variant === "header" ? "bold" : "")};
+  letter-spacing: ${({ variant }) => (variant === "header" ? "8px" : "")};
   opacity: ${({ variant }) => (variant === "accent" ? 0.7 : 1)};
 
   ${baseStyles}

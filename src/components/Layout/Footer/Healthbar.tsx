@@ -12,7 +12,7 @@ export function HealthBar() {
       position="relative"
       m={2}
       w="250px"
-      h="32px"
+      h="40px"
       border="contrast"
       style={{ overflow: "hidden" }}
     >
@@ -24,7 +24,7 @@ export function HealthBar() {
         transition
         zIndex={-1}
       />
-      <Text ml={1} mt={1 / 4} c={level > 1 ? "text" : "base"} fontWeight="bold">
+      <Text ml={1} mt={2 / 3} c={level > 1 ? "text" : "base"} fontWeight="bold">
         {Math.max(health, 0)} HP
       </Text>
     </Flex>

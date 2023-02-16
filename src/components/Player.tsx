@@ -9,13 +9,13 @@ const AnimatedPlayer = styled(Image)<{ isHit: boolean }>`
 
   @keyframes hit {
     0% {
-      filter: invert(1);
+      filter: hue-rotate(0deg) invert(1);
     }
     50% {
-      filter: invert(0);
+      filter: hue-rotate(100deg) invert(0);
     }
     100% {
-      filter: invert(1);
+      filter: hue-rotate(100deg) invert(1);
     }
   }
 `;
@@ -37,7 +37,7 @@ export function Player() {
       style={{
         left: x,
         top: y,
-        filter: level > 2 ? "invert(1)" : "none",
+        filter: level > 3 ? "invert(1)" : level > 2 ? "grayscale(1)" : "none",
       }}
       isHit={isHit}
     />

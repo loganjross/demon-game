@@ -10,17 +10,26 @@ const GameContext = createContext<{
   setStage: (stage: GameStage) => void;
   timer: number;
   level: number;
+  killCount: number;
+  addKills: (kills: number) => void;
 }>({
   stage: "start",
   setStage: () => {},
   timer: 0,
   level: 0,
+  killCount: 0,
+  addKills: () => {},
 });
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [stage, setStage] = useState<GameStage>("start");
   const [timer, setTimer] = useState<number>(0);
   const [level, setLevel] = useState<number>(0);
+  const [killCount, setKillCount] = useState<number>(0);
+
+  function addKills(kills: number) {
+    setKillCount((killCount) => killCount + kills);
+  }
 
   useEffect(() => {
     if (stage !== "playing") return;
@@ -44,6 +53,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         if (stage === "start" || stage === "paused") setStage("playing");
         if (stage === "gameover") {
           setStage("restart");
+          setTimer(0);
+          setLevel(1);
           setTimeout(() => setStage("playing"), 1000);
         }
       }
@@ -56,7 +67,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   }, [stage]);
 
   return (
-    <GameContext.Provider value={{ stage, setStage, timer, level }}>
+    <GameContext.Provider
+      value={{ stage, setStage, timer, level, killCount, addKills }}
+    >
       {children}
     </GameContext.Provider>
   );

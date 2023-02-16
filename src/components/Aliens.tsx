@@ -19,7 +19,8 @@ export function Aliens() {
           style={{
             left: x,
             top: y,
-            filter: level > 2 ? "invert(1)" : "none",
+            filter:
+              level > 3 ? "invert(1)" : level > 2 ? "grayscale(1)" : "none",
           }}
         />
       ))}
