@@ -33,6 +33,7 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
   const [alienSpawnInterval, setAlienSpawnInterval] = useState(
     BASE_ALIEN_SPAWN_INTERVAL
   );
+  const [deadAlienIds, setDeadAlienIds] = useState<number[]>([]);
 
   useEffect(() => {
     if (game.level) {
@@ -40,6 +41,10 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
       setAlienSpawnInterval((interval) => interval / LEVEL_UP_SCALER);
     }
   }, [game.level]);
+
+  useEffect(() => {
+    game.setKillCount(deadAlienIds.length);
+  }, [game, deadAlienIds.length]);
 
   useEffect(() => {
     if (game.stage === "restart") {
@@ -117,6 +122,10 @@ export function AlienProvider({ children }: { children: React.ReactNode }) {
             setTimeout(() => {
               setAliens((aliens) => aliens.filter((a) => a.id !== alien.id));
             }, ALIEN_DEATH_DURATION);
+
+            if (!deadAlienIds.includes(alien.id)) {
+              setDeadAlienIds((ids) => [...ids, alien.id]);
+            }
           }
         }
       }

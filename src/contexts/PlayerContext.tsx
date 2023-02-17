@@ -45,6 +45,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     if (stage === "restart") {
       setX(INITIAL_PLAYER_POSITION.x);
       setHealth(MAX_PLAYER_HEALTH);
+      setHeldKeys([]);
     }
 
     if (stage !== "playing") return;

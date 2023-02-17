@@ -23,7 +23,7 @@ const AnimatedPlayer = styled(Image)<{ isHit: boolean }>`
 export function Player() {
   const { level } = useGame();
   const {
-    pos: { x, y },
+    pos: { x },
     isHit,
   } = usePlayer();
 
@@ -32,11 +32,11 @@ export function Player() {
       src="img/skull.gif"
       alt="Player 1"
       position="absolute"
+      bottom={100}
       w={PLAYER_SIZE + "px"}
       zIndex={100}
       style={{
         left: x,
-        top: y,
         filter: level > 3 ? "invert(1)" : level > 2 ? "grayscale(1)" : "none",
       }}
       isHit={isHit}

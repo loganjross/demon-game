@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { useGame } from "../../contexts/GameContext";
 
-const WormholeContainer = styled.div<{ holyFuck: boolean }>`
+const WormholeContainer = styled.div`
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -44,10 +44,7 @@ const WormholeContainer = styled.div<{ holyFuck: boolean }>`
   .side {
     background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/231848/fractal-fire-sky-seamless-background.jpg);
     background-size: 159.12989vmin 25%;
-    filter: ${({ holyFuck }) =>
-      holyFuck
-        ? "hue-rotate(-50deg) contrast(300) saturate(10)"
-        : "hue-rotate(50deg) contrast(100) saturate(100)"};
+    filter: hue-rotate(-50deg) contrast(300) saturate(10);
     height: 100vmin;
     position: absolute;
     transform-origin: 0;
@@ -125,7 +122,7 @@ export function Wormhole() {
   if (level < 4) return <></>;
 
   return (
-    <WormholeContainer holyFuck={level > 4}>
+    <WormholeContainer>
       <div className="polygon">
         <div className="side"></div>
         <div className="side"></div>
